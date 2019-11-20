@@ -1,14 +1,20 @@
 export default {
     state: {
-        ispush:true,
-        lists:[
-           
+        ispush: true,
+        lists: [
+
         ],
-        ispushList:[]
+        ispushList: []
     },
     mutations: {
-        isfals(state){
+        isfals(state) {
             state.ispush = false
+        },
+        pushIndex(state, index) {
+            if (state.ispushList.indexOf(index) == -1) {
+                console.log(state.ispushList.indexOf(index))
+                state.ispushList.push(index)
+            }
         }
     },
     actions: {},

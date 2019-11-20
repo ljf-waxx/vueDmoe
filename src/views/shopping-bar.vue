@@ -12,10 +12,14 @@
         <span class="btn" @click="go">去逛逛</span>
       </div>
     </div>
+    
     <!-- 购物车有数据时显示 -->
+    <!-- {{ispushList}} -->
+    <!-- {{listData[0].price}}
+    {{listData[0].num}} -->
     <div v-if="!display">
       <van-nav-bar title="购物车" left-text="返回" left-arrow @click-left="go1" />
-      <van-card
+      <!-- <van-card
         v-for="(value,i) in listData"
         :key="i"
         :num="value.num"
@@ -23,8 +27,17 @@
         :desc="value.tip"
         title="商品名称"
         :thumb="value.path"
+      /> -->
+        <van-card
+        v-for="(value,i) in ispushList"
+        :key="i"
+        :num="listData[value].num"
+        :price="listData[value].price"
+        :desc="listData[value].tip"
+        title="商品名称"
+        :thumb="listData[value].path"
       />
-      {{listData[0]}}
+      
       <van-submit-bar :price="price1" button-text="提交订单" @submit="onSubmit">
         <van-checkbox v-model="checked">全选</van-checkbox>
         <span slot="tip">
@@ -42,8 +55,10 @@ export default {
   data() {
     return {
       checked: 1,
-      price: "",
-      display: true
+      price: 1,
+      display: true,
+      dataList:[]
+
     };
   },
   methods: {
@@ -56,20 +71,37 @@ export default {
     onSubmit() {}
   },
   created() {
-    // console.log(this.ispush);
+    this.$store.commit('pushIndex', this.$route.query.index)
+    console.log(this.ispushList.length);
     if (!this.ispush) {
       this.display = false;
     }
   },
   computed: {
     ...mapState({
-      listData: state => state.shoppingCar.lists,
-      ispush: state => state.shoppingCar.ispush
+      listData: state => state.bannerLiner.list,
+      ispush: state => state.shoppingCar.ispush,
+      ispushList : state => state.shoppingCar.ispushList
     }),
     price1:function(){
-      return this.listData[0].price*this.listData[0].num*100
+      var num = 0 ;
+        for(var i=0 ; i<this.ispushList.length ; i++){
+          num +=this.listData[i].price*this.listData[i].num*100
+        }
+
+      return num
     }
-  }
+  },
+  // watch:{
+  //   ispushList : function(){
+  //       // var num = 0 ;
+  //       for(var i=0 ; i<this.ispushList.length ; i++){
+  //        this.price +=this.listData[i].price*this.listData[i].num*100
+  //       }
+  //       // this.price = num
+  //   }
+  // }
+  // store.commit('MUTATIONS', payload)
 };
 </script>
 

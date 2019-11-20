@@ -33,7 +33,7 @@ export default {
   data() {
     return {
       key: this.$route.query.index,
-      ischecked : this.ispush
+      ischecked : this.ispush,
     };
   },
   methods: {
@@ -41,20 +41,20 @@ export default {
       this.$router.go(-1);
     },
     gobuy(index) {
-        this.$store.state.shoppingCar.lists.num +=1;
-      if(this.ispush){
+      if(this.ispushList.length >= 0){
            this.$store.state.shoppingCar.lists.push(this.list[index])
            this.$store.commit("isfals")
       }
-    console.log(this.ispush)
-      this.$router.push("/shopping");
+    // console.log(this.ispush)
+      this.$router.push({
+        path:`shopping?index=${index}`
+      });
     },
     onClickButton() {
        this.list[this.$route.query.index].num +=1
     }
   },
   created() {
-    // console.log(this.ispush);
   },
   watch: {
     "$router.path": function(newvalue, oldvalue) {
@@ -64,7 +64,8 @@ export default {
   computed: {
     ...mapState({
       list: state => state.bannerLiner.list,
-      ispush : state => state.shoppingCar.ispush
+      ispush : state => state.shoppingCar.ispush,
+      ispushList : state => state.shoppingCar.ispushList
 
     })
   }

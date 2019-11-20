@@ -137,6 +137,7 @@ export default {
   left: 0;
   width: 100%;
   z-index: 999;
+  max-width: 640px;
   background-color: #b81c22;
   height: 44px;
   overflow: hidden;
