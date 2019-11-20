@@ -1,2 +1,6 @@
 > 1%
 last 2 versions
+
+not ie <= 1
+Android >= 1.0
+iOS >= 8
