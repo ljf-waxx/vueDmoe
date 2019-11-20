@@ -8,13 +8,24 @@
     >温馨提示 :三亚机场出发，至少于起飞前6小时完成购买；海口美兰、琼海博鳌机场、火车站出发，至少离岛前一天内完成购买，如有疑问，请致电400-699-6956。</div>
     <div class="box-bottom">
       <div class="tip">您的购物袋内还没有任何商品 ……</div>
-      <span class="btn">去逛逛</span>
+      <span class="btn" @click="go">去逛逛</span>
     </div>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      
+    }
+  },
+  methods: {
+    go() {
+      this.$router.push("/home")
+    }
+  },
+};
 </script>
 
 <style lang="less" scoped>

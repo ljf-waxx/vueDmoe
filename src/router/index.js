@@ -7,6 +7,7 @@ import my from "../views/my.vue";
 import brand from "../views/brand.vue";
 import select from "../views/select.vue";
 import shopping from "../views/shopping-bar.vue";
+import byuing from "../views/buying.vue";
 
 Vue.use(VueRouter);
 
@@ -24,7 +25,10 @@ const routes = [
   {
     path: "/home",
     name: "home",
-    component: home
+    component: home,
+    children:[
+      {path:"/home/buying",name:"买买买",component:byuing}
+    ]
   },
   {
     path: "/select",
@@ -45,6 +49,10 @@ const routes = [
     path: "/my",
     name: "brand",
     component: my
+  },{
+    path:"/buying",
+    // name:"买!",
+    component:byuing
   }
 ];
 

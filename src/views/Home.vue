@@ -46,7 +46,7 @@
         icon="https://pic.cdfgsanya.com/assets/upload/img/03deae7c51a68e9272490b4e001034b2.png"
         text="排行榜"
       />
-      <van-grid-item icon="todo-list-o" text="我的订单" />
+      <van-grid-item icon="todo-list-o" text="我的订单"  @click="go(5)"/>
       <van-grid-item icon="balance-pay" text="优惠劵" />
       <van-grid-item icon="after-sale" text="购物流程" />
       <van-grid-item icon="contact" text="常见问题" />
@@ -83,6 +83,8 @@
     <plateNav :plateDatas="plateData6"></plateNav>
     <plateNav :plateDatas="plateData7"></plateNav>
     <plateNav :plateDatas="plateData8"></plateNav>
+
+    <router-view></router-view>
   </div>
 </template>
 
@@ -96,6 +98,13 @@ export default {
     return {
       value: ""
     };
+  },
+  methods: {
+    go(index) {
+      this.$router.push(
+       {path:`/buying?index=${index}`}
+      )
+    }
   },
   components: { bannerLiner, plateNav },
   computed: {

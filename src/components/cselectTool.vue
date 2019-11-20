@@ -2,28 +2,22 @@
   <div>
     <div >
       <div class="pic">
-        <img src="../assets/img/select1.jpg" alt />
+        <img :src='list.showy' alt />
       </div>
       <van-row class="title">
-        <van-col span="12" class="subTitle">护肤</van-col>
+        <van-col span="12" class="subTitle">{{list.title}}</van-col>
         <van-col span="12">
           <van-icon name="arrow" class="look" />
           <span class="look">查看全部</span>
         </van-col>
       </van-row>
-      <van-grid :column-num="3" icon-size="60px">
+       <van-grid :column-num="3" icon-size="60px" > 
         <van-grid-item
-          icon="https://pic.cdfgsanya.com/assets/upload/navicon/620803c3a882c2c17493b16d9109fb44.jpg"
-          text="套装2"
-        />
-        <van-grid-item
-          icon="https://pic.cdfgsanya.com/assets/upload/navicon/39c181b9486ad109d3e194cb66f526e4.jpg"
-          text="爽肤水"
-        />
-        <van-grid-item
-          icon="https://pic.cdfgsanya.com/assets/upload/navicon/26482845513489f69d7f04f9272af530.jpg"
-          text="洁面仪"
-        />
+          :icon='value.path'
+          :text="value.tip"
+          v-for="(value,i) in list.listData" :key="i"
+        /> 
+        
       </van-grid>
     </div>
   </div>
@@ -37,7 +31,11 @@ export default {
     //   activeId: 1,
     //   activeIndex: 0
     };
-  }
+  },
+  components:{
+
+  },
+  props:["list"]
 };
 </script>
 

@@ -13,7 +13,7 @@
     <div>
       <van-tree-select :items="items" :main-active-index.sync="activeIndex" height=100% class="wrapp-select" @click-nav="add" >
         <template slot="content">
-          <div v-if="activeIndex === 0" class="secletBox" @click="add(activeIndex)">
+          <!-- <div v-if="activeIndex === 0" class="secletBox" @click="add(activeIndex)">
             <div class="pic">
               <img src="../assets/img/select1.jpg" alt />
             </div>
@@ -29,24 +29,21 @@
               <van-grid-item icon="https://pic.cdfgsanya.com/assets/upload/navicon/39c181b9486ad109d3e194cb66f526e4.jpg" text="爽肤水" />
               <van-grid-item icon="https://pic.cdfgsanya.com/assets/upload/navicon/26482845513489f69d7f04f9272af530.jpg" text="洁面仪" />
             </van-grid>
-          </div>
+          </div> -->
           <!-- <van-image v-if="activeIndex === 1" src="https://img.yzcdn.cn/vant/apple-2.jpg" /> -->
-          <selsctBox v-if="activeIndex === 1" class="secletBox"></selsctBox>
-          <selsctBox v-if="activeIndex === 1" class="secletBox"></selsctBox>
-          <selsctBox v-if="activeIndex === 1" class="secletBox"></selsctBox>
-          <selsctBox v-if="activeIndex === 1" class="secletBox"></selsctBox>
-          <selsctBox v-if="activeIndex === 1" class="secletBox"></selsctBox>
-          <selsctBox v-if="activeIndex === 3" class="secletBox"></selsctBox>
-          <selsctBox v-if="activeIndex === 2" class="secletBox"></selsctBox>
+          <selsctBox v-if="activeIndex === 0" :list="list1" class="secletBox"></selsctBox>
+         
         </template>
       </van-tree-select>
     </div>
+    <div style="z-index:222;">{{list1}}</div>
     <!-- select box end -->
   </div>
 </template>
 
 <script>
 import selsctBox from '../components/cselectTool'
+import {mapState} from 'vuex'
 export default {
   data() {
     return {
@@ -62,7 +59,13 @@ export default {
   },
   components:{
     selsctBox
-  }
+  },
+  computed:{
+    ...mapState({
+      list1 : state => state.selectBox.lists[0]
+    })
+  },
+  
 };
 </script>
 

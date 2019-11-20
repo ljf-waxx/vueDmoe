@@ -1,6 +1,7 @@
 import Vue from "vue";
 import Vuex from "vuex";
 import bannerLiner from "./home/bannerLiner";
+import selectBox from "./home/selectBox";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
@@ -8,7 +9,8 @@ export default new Vuex.Store({
   mutations: {},
   actions: {},
   modules: {
-    bannerLiner
+    bannerLiner,
+    selectBox
   },
   children: {}
 });

@@ -32,7 +32,8 @@ export default {
   },
   watch: {
     "$route.path": function(newvalule) {
-      if (newvalule == "/" || newvalule == "/gg") {
+      console.log(newvalule)
+      if (newvalule == "/" || newvalule == "/gg" || newvalule == "/buying") {
         this.display = false;
       } else {
         this.display = true;
@@ -46,6 +47,8 @@ export default {
 html,
 body {
   padding: 0;
+   min-width: 320px;
+  max-width: 640px;
   margin: 0;
 }
 #app {
