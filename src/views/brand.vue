@@ -60,8 +60,8 @@
       <van-cell title="BVLGARI 宝格丽" />
     </van-index-bar> -->
 
-  <div>
-     <van-index-bar :index-list="indexList" sticky highlight-color	>
+  
+     <van-index-bar :index-list="indexList"  highlight-color	>
   <van-index-anchor index="1">标题1</van-index-anchor>
   <van-cell title="文本" />
   <van-cell title="文本" />
@@ -98,7 +98,7 @@
 
   ...
 </van-index-bar>
-  </div>
+  
     <!-- select tool end-->
   </div>
 </template>
