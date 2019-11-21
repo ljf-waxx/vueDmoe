@@ -12,6 +12,7 @@
             show-action:true
             input-align:center
             background="#b81c22"
+            @click="goSearch"
           />
         </form>
       </van-col>
@@ -104,6 +105,9 @@ export default {
       this.$router.push(
        {path:`/buying?index=${index}`}
       )
+    },
+    goSearch(){
+      this.$router.push("/search")
     }
   },
   components: { bannerLiner, plateNav },

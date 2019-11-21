@@ -1,5 +1,6 @@
 <template>
-  <div>
+  <div class="pad-bot">
+    
     <div v-if="display">
       <van-nav-bar title="我的购物袋" heighe:2.5rem />
       <div class="br-bor"></div>
@@ -12,23 +13,11 @@
         <span class="btn" @click="go">去逛逛</span>
       </div>
     </div>
-    
-    <!-- 购物车有数据时显示 -->
-    <!-- {{ispushList}} -->
-    <!-- {{listData[0].price}}
-    {{listData[0].num}} -->
+
     <div v-if="!display">
       <van-nav-bar title="购物车" left-text="返回" left-arrow @click-left="go1" />
+
       <!-- <van-card
-        v-for="(value,i) in listData"
-        :key="i"
-        :num="value.num"
-        :price="value.price"
-        :desc="value.tip"
-        title="商品名称"
-        :thumb="value.path"
-      /> -->
-        <van-card
         v-for="(value,i) in ispushList"
         :key="i"
         :num="listData[value].num"
@@ -36,13 +25,45 @@
         :desc="listData[value].tip"
         title="商品名称"
         :thumb="listData[value].path"
-      />
-      
+      /> -->
+
+
+
+<div  v-for="(value,i) in ispushList"
+        :key="i">
+  <van-card
+ 
+        :num="listData[value].num"
+        :price="listData[value].price"
+        :desc="listData[value].tip"
+        title="商品名称"
+        :thumb="listData[value].path"
+>
+  
+
+
+  <div slot="footer">
+    <van-button size="mini" @click="add1(value)">
+      +
+    </van-button>
+    {{listData[value].num}}
+    <van-button size="mini" @click="jian(value)">
+     -
+    </van-button>
+
+    <div style="margin-top:1rem;">
+      <van-button round type="danger" size="mini" @click="redel(i,value)">删除</van-button>
+    </div>
+  </div>
+</van-card>
+
+</div>
+
       <van-submit-bar :price="price1" button-text="提交订单" @submit="onSubmit">
-        <van-checkbox v-model="checked">全选</van-checkbox>
+        <!-- <van-checkbox v-model="checked">全选</van-checkbox> -->
         <span slot="tip">
           你的收货地址不支持同城送,
-          <span>修改地址</span>
+          <span style="color:#00b5ffcf;">修改地址</span>
         </span>
       </van-submit-bar>
     </div>
@@ -51,14 +72,14 @@
 
 <script>
 import { mapState } from "vuex";
+import { Notify } from 'vant';
 export default {
   data() {
     return {
       checked: 1,
       price: 1,
       display: true,
-      dataList:[]
-
+      dataList: []
     };
   },
   methods: {
@@ -68,11 +89,28 @@ export default {
     go1() {
       this.$router.go(-1);
     },
-    onSubmit() {}
+    onSubmit() {
+      Notify({ type: 'success', message: '提交成功',duration:2000 });
+      this.$store.commit("isdisp")
+      this.display = true
+
+
+    },
+    add1(i){
+        this.$store.commit("add1",i)
+    },
+    jian(i){
+       this.$store.commit('jian',i)
+    },
+    redel(i,value){
+      this.$store.commit("redel",i)
+      this.$store.commit("redel1",value)
+    }
   },
   created() {
-    this.$store.commit('pushIndex', this.$route.query.index)
-    console.log(this.ispushList.length);
+    if (this.$route.query.index) {
+      this.$store.commit("pushIndex", this.$route.query.index);
+    }
     if (!this.ispush) {
       this.display = false;
     }
@@ -81,31 +119,29 @@ export default {
     ...mapState({
       listData: state => state.bannerLiner.list,
       ispush: state => state.shoppingCar.ispush,
-      ispushList : state => state.shoppingCar.ispushList
+      ispushList: state => state.shoppingCar.ispushList
     }),
-    price1:function(){
-      var num = 0 ;
-        for(var i=0 ; i<this.ispushList.length ; i++){
-          num +=this.listData[i].price*this.listData[i].num*100
-        }
+    price1: function() {
+      var num = 0;
+      // for (var i = 0; i < this.ispushList.length; i++) {
+      //   console.log(this.listData[1].price, this.listData[1].num);
+      //   num += this.listData[i].price * this.listData[i].num * 100;
+      // }
 
-      return num
+      this.ispushList.forEach(value => {
+        console.log(this.listData[value].price*this.listData[value].num)
+        num += this.listData[value].price*this.listData[value].num*100
+      });
+      return num;
     }
-  },
-  // watch:{
-  //   ispushList : function(){
-  //       // var num = 0 ;
-  //       for(var i=0 ; i<this.ispushList.length ; i++){
-  //        this.price +=this.listData[i].price*this.listData[i].num*100
-  //       }
-  //       // this.price = num
-  //   }
-  // }
-  // store.commit('MUTATIONS', payload)
+  }
 };
 </script>
 
 <style lang="less" scoped>
+.pad-bot{
+  padding-bottom: 5rem;
+}
 .van-nav-bar {
   height: 2.5rem;
 }
@@ -113,6 +149,9 @@ export default {
   width: 100%;
   height: 1rem;
   background-color: #f7f7f7;
+}
+.van-card{
+  margin-top: 1rem;
 }
 .warm-prompt {
   box-sizing: border-box;

@@ -3,9 +3,9 @@
     <div class="header">
       <div class="user">
         <div class="btn">
-          <img src="../assets/img/user.png" class="use" alt />
+          <img :src='img' class="use" alt @click="login" />
         </div>
-        <div>注册/登录</div>
+        <div>{{name}}</div>
       </div>
     </div>
     <!-- 订单 -->
@@ -91,7 +91,34 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      img:require("../assets/img/user.png"),
+      name:'注册/登录'
+    }
+  },
+  methods: {
+    login() {
+      this.$router.push("/login")
+    }
+  },
+  created(){
+    if(!localStorage.login){
+        this.$router.push("/login")
+    }else{
+      this.$axios.get("http://192.168.54.65:3000/getdata",{
+        params:{
+          token:localStorage.login
+        }
+      }).then((req)=>{
+        console.log(req.data.result);
+        this.img = req.data.result.img
+        this.name = req.data.result.name
+      })
+    }
+  }
+};
 </script>
 
 <style lang="less" scoped>

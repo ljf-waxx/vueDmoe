@@ -8,6 +8,9 @@ import brand from "../views/brand.vue";
 import select from "../views/select.vue";
 import shopping from "../views/shopping-bar.vue";
 import byuing from "../views/buying.vue";
+import login from "../views/login.vue"
+import search from "../views/search.vue"
+
 
 Vue.use(VueRouter);
 
@@ -53,6 +56,16 @@ const routes = [
     path:"/buying",
     // name:"买!",
     component:byuing
+  },
+  {
+    path:"/login",
+    name:"注册",
+    component:login
+  },
+  {
+    path:'/search',
+    name:"搜索",
+    component:search
   }
 ];
 

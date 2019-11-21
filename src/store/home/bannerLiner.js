@@ -338,7 +338,25 @@ export default {
     }]
   },
   mutations: {
-    
+    add(state,i){
+      // console.log(state,i)
+      state.list[i].num++
+      console.log(state.list[i].num)
+    },
+    add1(state,i){
+      console.log(state,i)
+      state.list[i].num++
+    },
+    jian(state,i){
+      // console.log(i)
+      if( state.list[i].num < 1){
+        state.list[i].num =1
+      }
+      state.list[i].num--
+    },
+    redel1(state,i){
+      state.list[i].num = 0;
+    }
    
   },
   actions: {

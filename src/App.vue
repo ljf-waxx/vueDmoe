@@ -32,7 +32,7 @@ export default {
   },
   watch: {
     "$route.path": function(newvalule) {
-      console.log(newvalule)
+      // console.log(newvalule)
       if (newvalule == "/" || newvalule == "/gg" || newvalule == "/buying") {
         this.display = false;
       } else {

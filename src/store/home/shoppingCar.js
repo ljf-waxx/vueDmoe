@@ -15,7 +15,16 @@ export default {
                 console.log(state.ispushList.indexOf(index))
                 state.ispushList.push(index)
             }
-        }
+        },
+        redel(state,i){
+           
+            state.ispushList.splice(i,1)
+          },
+          
+    isdisp(state){
+        console.log("false")
+      state.ispush = false
+    }
     },
     actions: {},
     modules: {}

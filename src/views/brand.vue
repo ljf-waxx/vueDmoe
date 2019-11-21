@@ -1,7 +1,7 @@
 <template>
   <div>
-    <van-nav-bar title="全部品牌" height="40px">
-      <van-icon name="search" slot="right" />
+    <van-nav-bar title="全部品牌" height="40px" @click-right="goSearch"	>
+      <van-icon name="search" slot="right" @click="goSearch" />
     </van-nav-bar>
     <!-- <van-row>
       <van-col span="12">
@@ -10,7 +10,7 @@
       <van-col span="12">
         <img src="../assets/img/brand2.jpg" alt />
       </van-col>
-    </van-row> -->
+    </van-row>-->
 
     <van-row>
       <van-col span="12" v-for="index in picList" :key="index">
@@ -58,55 +58,68 @@
       <van-cell title="Breo倍轻松" />
       <van-cell title="BURBERRY 博柏利" />
       <van-cell title="BVLGARI 宝格丽" />
-    </van-index-bar> -->
+    </van-index-bar>-->
 
-  
-     <van-index-bar :index-list="indexList"  highlight-color	>
-  <van-index-anchor index="1">标题1</van-index-anchor>
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-
-  <van-index-anchor index="2">标题2</van-index-anchor>
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-  <van-cell title="文本" />
-
-  ...
-</van-index-bar>
-  
     <!-- select tool end-->
+    <div>
+      <van-index-bar :index-list="indexList" :sticky="sticky1">
+        <van-index-anchor index="a">标题1</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+
+        <van-index-anchor index="b">标题2</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+
+        <van-index-anchor index="c">标题3</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+
+        <van-index-anchor index="d">标题4</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+
+        <van-index-anchor index="e">标题5</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+
+        <van-index-anchor index="f">标题6</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-index-anchor index="g">标题6</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-index-anchor index="h">标题6</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-index-anchor index="i">标题6</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-index-anchor index="j">标题6</van-index-anchor>
+        <van-cell title="文本" />
+        <van-cell title="文本" />
+        <van-cell title="文本" />...
+      </van-index-bar>
+    </div>
   </div>
 </template>
 
 <script>
+
 export default {
   data() {
     return {
+      name: "cityList",
+      sticky1: true,
       picList: [
         require("../assets/img/brand1.jpg"),
         require("../assets/img/brand2.jpg"),
@@ -119,9 +132,32 @@ export default {
         require("../assets/img/brand9.jpg"),
         require("../assets/img/brand10.jpg")
       ],
-      indexList: [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+      indexList: [
+        "a",
+        "b",
+        "c",
+        "d",
+        "e",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k",
+        "f",
+        "g",
+        "h",
+        "i",
+        "j",
+        "k"
+      ]
     };
-  }
+  },
+  methods: {
+     goSearch(){
+      this.$router.push("/search")
+    }
+  },
 };
 </script>
 

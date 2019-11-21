@@ -16,6 +16,7 @@
           :icon='value.path'
           :text="value.tip"
           v-for="(value,i) in list.listData" :key="i"
+          @click="go(i)"
         /> 
         
       </van-grid>
@@ -31,6 +32,13 @@ export default {
     //   activeId: 1,
     //   activeIndex: 0
     };
+  },
+  methods: {
+    go(i) {
+      this.$router.push({
+        path:`/buying?index=${i}`
+      })
+    }
   },
   components:{
 

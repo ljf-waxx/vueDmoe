@@ -32,6 +32,8 @@
           </div> -->
           <!-- <van-image v-if="activeIndex === 1" src="https://img.yzcdn.cn/vant/apple-2.jpg" /> -->
           <selsctBox v-if="activeIndex === 0" :list="list1" class="secletBox"></selsctBox>
+          <selsctBox v-if="activeIndex === 1" :list="list1" class="secletBox"></selsctBox>
+          <selsctBox v-if="activeIndex === 2" :list="list1" class="secletBox"></selsctBox>
          
         </template>
       </van-tree-select>
