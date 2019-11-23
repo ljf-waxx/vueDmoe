@@ -27,11 +27,11 @@
           />
         </div>
         <div class="swiper-slide wrapper">
-          <van-button type="primary" class="btn animated zoomIn" @click="go"  
+          <van-button type="primary" class="btn animated zoomIn" @click="go"
             >立即开启</van-button
           >
 
-          <img src="../assets/img/swiper4.jpg" class="animated zoomIn"  alt />
+          <img src="../assets/img/swiper4.jpg" class="animated zoomIn" alt />
         </div>
       </div>
     </div>

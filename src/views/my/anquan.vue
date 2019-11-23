@@ -28,7 +28,12 @@
       <van-col span="21">
         <div class="info-left">
           <span class="info-title">手机验证</span>
-          <p class="info-text">*若您的验证手机已丢失或停用，请立即修改更换<span style="color:#b81c22;">177*****5392</span></p>
+          <p class="info-text">
+            *若您的验证手机已丢失或停用，请立即修改更换<span
+              style="color:#b81c22;"
+              >177*****5392</span
+            >
+          </p>
         </div>
       </van-col>
       <van-col span="1">

@@ -6,7 +6,9 @@
       <van-tabbar-item icon="wap-home" to="/home">首页</van-tabbar-item>
       <van-tabbar-item icon="label" to="/brand">品牌</van-tabbar-item>
       <van-tabbar-item icon="bars" to="select">分类</van-tabbar-item>
-      <van-tabbar-item icon="shopping-cart" to="shopping">购物袋</van-tabbar-item>
+      <van-tabbar-item icon="shopping-cart" to="shopping"
+        >购物袋</van-tabbar-item
+      >
       <van-tabbar-item icon="manager" to="my">我的</van-tabbar-item>
     </van-tabbar>
   </div>

@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="year" v-for="(value, i) in plateDatas" :key="i">
+    <!-- <div class="year" v-for="(value, i) in plateDatas" :key="i">
       <div class="top">
         <van-divider style="font-size:16px;height:15px;">{{
           value.title
@@ -9,8 +9,15 @@
       <div class="pic-box">
         <img :src="value.path" alt @click="go(index)" />
       </div>
-      <!-- {{plateDatas}} -->
-    </div>
+    </div> -->
+    <div class="top">
+        <van-divider style="font-size:16px;height:15px;">{{
+          plateDatas.title
+        }}</van-divider>
+      </div>
+      <div class="pic-box">
+        <img :src="plateDatas.path" alt @click="go(index)" />
+      </div>
   </div>
 </template>
 
@@ -19,14 +26,12 @@ export default {
   data() {
     return {};
   },
-  methods:{
-     go(index) {
-      this.$router.push(
-       {path:`/buying?index=${index}`}
-      )
+  methods: {
+    go(index) {
+      this.$router.push({ path: `/buying?index=${index}&list=${3}` });
     }
   },
-  props: ["plateDatas",'index']
+  props: ["plateDatas", "index"]
 };
 </script>
 

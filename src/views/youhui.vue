@@ -1,19 +1,28 @@
 <template>
   <div>
-    <van-nav-bar title="我的优惠劵" left-text="返回" left-arrow @click-left="go"></van-nav-bar>
+    <van-nav-bar
+      title="我的优惠劵"
+      left-text="返回"
+      left-arrow
+      @click-left="go"
+    ></van-nav-bar>
 
     <van-tabs v-model="active">
       <van-tab title="可用优惠劵">
-        <van-coupon-cell :coupons="coupons" :chosen-coupon="chosenCoupon" @click="showList = true" />
+        <van-coupon-cell
+          :coupons="coupons"
+          :chosen-coupon="chosenCoupon"
+          @click="showList = true"
+        />
         <van-popup v-model="showList" position="bottom">
-  <van-coupon-list
-    :coupons="coupons"
-    :chosen-coupon="chosenCoupon"
-    :disabled-coupons="disabledCoupons"
-    @change="onChange"
-    @exchange="onExchange"
-  />
-</van-popup>
+          <van-coupon-list
+            :coupons="coupons"
+            :chosen-coupon="chosenCoupon"
+            :disabled-coupons="disabledCoupons"
+            @change="onChange"
+            @exchange="onExchange"
+          />
+        </van-popup>
       </van-tab>
       <van-tab title="已用优惠卷">2</van-tab>
       <van-tab title="过期优惠劵">3</van-tab>
@@ -37,16 +46,16 @@ export default {
   data() {
     return {
       active: 0,
-      showList:false,
+      showList: false,
       chosenCoupon: -1,
-      emptyImage:"https://img.yzcdn.cn/vant/coupon-empty.png",
+      emptyImage: "https://img.yzcdn.cn/vant/coupon-empty.png",
       showExchangeBar: true,
-      exchangeMinLength:6,
+      exchangeMinLength: 6,
       disabledCoupons: [coupon],
-      coupons : [
+      coupons: [
         {
-          id:"1",
-          name:"美妆体验区",
+          id: "1",
+          name: "美妆体验区",
           available: 1,
           condition: "无使用门槛\n最多优惠120元",
           reason: "",
@@ -75,5 +84,4 @@ export default {
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

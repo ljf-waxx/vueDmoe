@@ -1,6 +1,11 @@
 <template>
   <div>
-    <van-nav-bar title="我的提货人" left-text="返回" left-arrow @click-left="go"></van-nav-bar>
+    <van-nav-bar
+      title="我的提货人"
+      left-text="返回"
+      left-arrow
+      @click-left="go"
+    ></van-nav-bar>
 
     <van-address-list
       v-model="chosenAddressId"
@@ -9,7 +14,7 @@
       disabled-text="以下地址超出配送范围"
       @add="onAdd"
       @edit="onEdit"
-      @select ="select"
+      @select="select"
       v-show="show"
     />
     <addCity v-show="!show" :show="show" @show="showfun"></addCity>
@@ -74,12 +79,12 @@ export default {
         address: objData.address
       });
     },
-    select(){
-       Toast("地址切换成功" );
+    select() {
+      Toast("地址切换成功");
+      this.$router.go(-1)
     }
   }
 };
 </script>
 
-<style lang="scss" scoped>
-</style>
+<style lang="scss" scoped></style>

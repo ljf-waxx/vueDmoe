@@ -29,19 +29,18 @@ export default {
 </script>
 
 <style lang="less" scoped>
-.banner{
+.banner {
   width: 100%;
   height: 100%;
   position: fixed;
   top: 0;
-    bottom: 0;
+  bottom: 0;
   background: url(../assets/img/gao.jpg) no-repeat center center;
   background-size: 100%;
 }
-h3{
+h3 {
   margin: 15px;
   color: #fff;
   font-weight: 500;
 }
 </style>
-

@@ -2,7 +2,13 @@
   <div>
     <div class="swiper-container">
       <div class="swiper-wrapper">
-        <div class="swiper-slide" v-for="(value, i) in lists" :key="i" @click="go(i)">
+        <!-- {{lists[index]}} -->
+        <div
+          class="swiper-slide"
+          v-for="(value, i) in lists"
+          :key="i"
+          @click="go(i)"
+        >
           <img :src="value.path" />
           <h3 class="title">{{ value.title }}</h3>
           <p class="tip">{{ value.tip }}</p>
@@ -28,13 +34,12 @@ export default {
   },
   methods: {
     go(i) {
-        this.$router.push({
-          path:`/buying?index=${i}`
-        })
+      this.$router.push({
+        path: `/buying?index=${i}&list=${this.index == undefined ? 1 : this.index}`
+      });
     }
   },
   mounted() {
-    
     new Swiper(".swiper-container", {
       slidesPerView: 3,
       spaceBetween: 30,
@@ -44,7 +49,7 @@ export default {
       }
     });
   },
-  props: ["lists"]
+  props: ["lists","index"]
 };
 </script>
 

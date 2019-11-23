@@ -8,24 +8,24 @@ import brand from "../views/brand.vue";
 import select from "../views/select.vue";
 import shopping from "../views/shopping-bar.vue";
 import byuing from "../views/buying.vue";
-import login from "../views/login.vue"
-import search from "../views/search.vue"
-import youhui from "../views/youhui.vue"
-import city from "../views/city.vue"
-import addCity from "../views/addCity.vue"
-import filght from "../views/my/filght.vue"
-import collect from "../views/my/collect.vue"
-import record from "../views/my/record.vue"
-import anquan from "../views/my/anquan.vue"
-import lianxi from "../views/my/lianxi.vue"
-import help from "../views/my/help.vue"
-import helpContent from "../views/my/helpContent.vue"
-import mynav from "../views/my/myNav.vue"
-
+import login from "../views/login.vue";
+import search from "../views/search.vue";
+import youhui from "../views/youhui.vue";
+import city from "../views/city.vue";
+import addCity from "../views/addCity.vue";
+import filght from "../views/my/filght.vue";
+import collect from "../views/my/collect.vue";
+import record from "../views/my/record.vue";
+import anquan from "../views/my/anquan.vue";
+import lianxi from "../views/my/lianxi.vue";
+import help from "../views/my/help.vue";
+import helpContent from "../views/my/helpContent.vue";
+import mynav from "../views/my/myNav.vue";
 
 Vue.use(VueRouter);
 
-const routes = [{
+const routes = [
+  {
     path: "/",
     name: "swiper",
     component: swiper
@@ -39,11 +39,13 @@ const routes = [{
     path: "/home",
     name: "home",
     component: home,
-    children: [{
-      path: "/home/buying",
-      name: "买买买",
-      component: byuing
-    }]
+    children: [
+      {
+        path: "/home/buying",
+        name: "买买买",
+        component: byuing
+      }
+    ]
   },
   {
     path: "/select",
@@ -64,7 +66,8 @@ const routes = [{
     path: "/my",
     name: "brand",
     component: my
-  }, {
+  },
+  {
     path: "/buying",
     // name:"买!",
     component: byuing
@@ -75,25 +78,27 @@ const routes = [{
     component: login
   },
   {
-    path: '/search',
+    path: "/search",
     name: "搜索",
     component: search
-  }, {
+  },
+  {
     path: "/youhui",
     name: "优惠",
     component: youhui
-  }, {
+  },
+  {
     path: "/city",
     name: "地址",
-    component: city,
+    component: city
     // children: []
-  }, {
-
+  },
+  {
     path: "/addCity",
     name: "地址",
     component: addCity
-
-  }, {
+  },
+  {
     path: "/filght",
     name: "地址",
     component: filght
@@ -122,30 +127,36 @@ const routes = [{
     path: "/lianxi",
     name: "联系",
     component: lianxi
-  },{
-    path:"/help",
-    name:'帮助',
-    component:help
-  },{
-    path:"/helpContent",
-    name:'帮助',
-    component:helpContent
-  },{
-    path:"/zhifu",
-    name:'待支付',
-    component:mynav
-  },{
-    path:"/wancehng",
-    name:'待完成',
-    component:mynav
-  },{
-    path:"/tihuo",
-    name:'代提货',
-    component:mynav
-  },{
-    path:"/quxiao",
-    name:'已取消',
-    component:mynav
+  },
+  {
+    path: "/help",
+    name: "帮助",
+    component: help
+  },
+  {
+    path: "/helpContent",
+    name: "帮助",
+    component: helpContent
+  },
+  {
+    path: "/zhifu",
+    name: "待支付",
+    component: mynav
+  },
+  {
+    path: "/wancehng",
+    name: "待完成",
+    component: mynav
+  },
+  {
+    path: "/tihuo",
+    name: "代提货",
+    component: mynav
+  },
+  {
+    path: "/quxiao",
+    name: "已取消",
+    component: mynav
   }
 ];
 

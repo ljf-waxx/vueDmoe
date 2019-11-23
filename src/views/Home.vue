@@ -47,7 +47,7 @@
         icon="https://pic.cdfgsanya.com/assets/upload/img/03deae7c51a68e9272490b4e001034b2.png"
         text="排行榜"
       />
-      <van-grid-item icon="todo-list-o" text="我的订单"  @click="go(5)"/>
+      <van-grid-item icon="todo-list-o" text="我的订单" @click="go(5)" />
       <van-grid-item icon="balance-pay" text="优惠劵" />
       <van-grid-item icon="after-sale" text="购物流程" />
       <van-grid-item icon="contact" text="常见问题" />
@@ -57,18 +57,26 @@
     <!-- pic -->
     <van-row>
       <van-col span="12" style="padding-right:4px">
-        <img src="../assets/img/pic1.jpg" alt  @click="go(1)" />
+        <img src="../assets/img/pic1.jpg" alt @click="go(1)" />
       </van-col>
       <van-col span="12" style="padding-left:4px">
-        <img src="../assets/img/pic3.jpg" alt  @click="go(2)" />
+        <img src="../assets/img/pic3.jpg" alt @click="go(2)" />
       </van-col>
       <van-col span="24" class="pic-bot">
-        <img src="../assets/img/pic2.jpg" alt @click="go(3)"  />
+        <img src="../assets/img/pic2.jpg" alt @click="go(3)" />
       </van-col>
     </van-row>
     <!-- pic  end-->
     <!-- 特卖 -->
-    <plateNav :plateDatas="plateData"  :index="1"></plateNav>
+    <!-- {{dataList}} -->
+    <div v-for="(value,i) in dataList" :key="i">
+      <!-- {{value.bannerList}} -->
+      <!-- {{plateData[i]}} -->
+      <!-- {{i}} -->
+      <plateNav :plateDatas="value.titleBox" :index="i"></plateNav>
+      <bannerLiner :lists="value.bannerList" :index="i"></bannerLiner>
+    </div>
+    <!-- <plateNav :plateDatas="plateData" :index="1"></plateNav>
     <bannerLiner :lists="list"></bannerLiner>
 
     <plateNav :plateDatas="plateData1" :index="2"></plateNav>
@@ -83,7 +91,7 @@
     <plateNav :plateDatas="plateData5" :index="5"></plateNav>
     <plateNav :plateDatas="plateData6" :index="6"></plateNav>
     <plateNav :plateDatas="plateData7" :index="7"></plateNav>
-    <plateNav :plateDatas="plateData8" :index="8"></plateNav>
+    <plateNav :plateDatas="plateData8" :index="8"></plateNav> -->
 
     <router-view></router-view>
   </div>
@@ -102,30 +110,29 @@ export default {
   },
   methods: {
     go(index) {
-      this.$router.push(
-       {path:`/buying?index=${index}`}
-      )
+      this.$router.push({ path: `/buying?index=${index}&list=${0}` });
     },
-    goSearch(){
-      this.$router.push("/search")
+    goSearch() {
+      this.$router.push("/search");
     }
   },
   components: { bannerLiner, plateNav },
   computed: {
     ...mapState({
-      plateData: state => state.bannerLiner.navplate,
-      list: state => state.bannerLiner.list,
-      plateData1: state => state.bannerLiner.navplate1,
-      list1: state => state.bannerLiner.list1,
-      plateData2: state => state.bannerLiner.navplate2,
-      list2: state => state.bannerLiner.list2,
-      plateData3: state => state.bannerLiner.navplate3,
-      list3: state => state.bannerLiner.list3,
-      plateData4: state => state.bannerLiner.navplate4,
-      plateData5: state => state.bannerLiner.navplate5,
-      plateData6: state => state.bannerLiner.navplate6,
-      plateData7: state => state.bannerLiner.navplate7,
-      plateData8: state => state.bannerLiner.navplate8
+      dataList: state => state.bannerLiner.dataList,
+      // plateData: state => state.bannerLiner.navplate,
+      // list: state => state.bannerLiner.list,
+      // plateData1: state => state.bannerLiner.navplate1,
+      // list1: state => state.bannerLiner.list1,
+      // plateData2: state => state.bannerLiner.navplate2,
+      // list2: state => state.bannerLiner.list2,
+      // plateData3: state => state.bannerLiner.navplate3,
+      // list3: state => state.bannerLiner.list3,
+      // plateData4: state => state.bannerLiner.navplate4,
+      // plateData5: state => state.bannerLiner.navplate5,
+      // plateData6: state => state.bannerLiner.navplate6,
+      // plateData7: state => state.bannerLiner.navplate7,
+      // plateData8: state => state.bannerLiner.navplate8
     })
   },
   created() {

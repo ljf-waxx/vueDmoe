@@ -142,12 +142,12 @@ export default {
     },
     onClickButton() {
       // console.log(this.$route.query.list)
-      this.$store.commit('pushIndex',[ this.$route.query.list,this.$route.query.index ])
       this.$store.commit("add", [ this.$route.query.list,this.$route.query.index ]);
     } 
   },
   created() {
-
+    // console.log(this.ispushList)
+    // console.log(this.$route.query.list)
   },
   watch: {},
   computed: {
@@ -156,7 +156,6 @@ export default {
       list1: state => state.bannerLiner.list1,
       ispush: state => state.shoppingCar.ispush,
       ispushList: state => state.shoppingCar.ispushList,
-      ispushList1: state => state.shoppingCar.ispushList2,
       listsData: state => state.bannerLiner.dataList
     })
   }
@@ -182,14 +181,11 @@ export default {
   }
 }
 .top-banner {
-  padding-top: 5.125rem;
   width: 100%;
-  height: 300px;
   img {
     width: 100%;
-    margin-top: -60px;
     // height: 15.375rem;
-    // height: 16.75rem;
+    margin-top: -6.25rem;
   }
 }
 .product-info {

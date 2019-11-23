@@ -1,24 +1,24 @@
 <template>
   <div>
-    <div >
+    <div>
       <div class="pic">
-        <img :src='list.showy' alt />
+        <img :src="list.showy" alt />
       </div>
       <van-row class="title">
-        <van-col span="12" class="subTitle">{{list.title}}</van-col>
+        <van-col span="12" class="subTitle">{{ list.title }}</van-col>
         <van-col span="12">
           <van-icon name="arrow" class="look" />
           <span class="look">查看全部</span>
         </van-col>
       </van-row>
-       <van-grid :column-num="3" icon-size="60px" > 
+      <van-grid :column-num="3" icon-size="60px">
         <van-grid-item
-          :icon='value.path'
+          :icon="value.path"
           :text="value.tip"
-          v-for="(value,i) in list.listData" :key="i"
+          v-for="(value, i) in list.listData"
+          :key="i"
           @click="go(i)"
-        /> 
-        
+        />
       </van-grid>
     </div>
   </div>
@@ -28,22 +28,20 @@
 export default {
   data() {
     return {
-    //   items: [{ text: "分组 1" }, { text: "分组 2" }],
-    //   activeId: 1,
-    //   activeIndex: 0
+      //   items: [{ text: "分组 1" }, { text: "分组 2" }],
+      //   activeId: 1,
+      //   activeIndex: 0
     };
   },
   methods: {
     go(i) {
       this.$router.push({
-        path:`/buying?index=${i}`
-      })
+        path: `/buying?index=${i}&list=${3}`
+      });
     }
   },
-  components:{
-
-  },
-  props:["list"]
+  components: {},
+  props: ["list"]
 };
 </script>
 
@@ -101,7 +99,7 @@ img {
 .van-col {
   line-height: 13px;
 }
-.van-tree-select__content{
+.van-tree-select__content {
   flex: 4;
 }
 .van-grid-item__icon {

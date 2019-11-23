@@ -3,16 +3,16 @@
     <div class="header">
       <div class="user">
         <div class="btn">
-          <img :src='img' class="use" alt @click="login" />
+          <img :src="img" class="use" alt @click="login" />
         </div>
-        <div>{{name}}</div>
+        <div>{{ name }}</div>
       </div>
     </div>
     <!-- 订单 -->
     <div class="order">
-      <div class="order-bar"  @click="$router.push('/dingdan')">
+      <div class="order-bar" @click="$router.push('/dingdan')"  >
         <div class="order-list-left">
-          <span class="iconfont icon-single" ></span> 全部订单
+          <span class="iconfont icon-single"></span> 全部订单
         </div>
         <div class="order-list-right">
           查看全部订单
@@ -22,11 +22,27 @@
     </div>
     <!-- 订单 end-->
     <!-- 宫格 -->
-    <van-grid  icon-size="20px" style="border-bottom:15px solid #eee">
-      <van-grid-item icon="balance-pay" text="待支付" @click="$router.push('/zhifu')" />
-      <van-grid-item icon="logistics" text="代提货" @click="$router.push('/tihuo')" />
-      <van-grid-item icon="gift-o" text="待完成" @click="$router.push('/wancehng')" />
-      <van-grid-item icon="clock-o" text="已取消" @click="$router.push('/quxiao')" />
+    <van-grid icon-size="20px" style="border-bottom:15px solid #eee; width:100%;">
+      <van-grid-item
+        icon="balance-pay"
+        text="待支付"
+        @click="$router.push('/zhifu')"
+      />
+      <van-grid-item
+        icon="logistics"
+        text="代提货"
+        @click="$router.push('/tihuo')"
+      />
+      <van-grid-item
+        icon="gift-o"
+        text="待完成"
+        @click="$router.push('/wancehng')"
+      />
+      <van-grid-item
+        icon="clock-o"
+        text="已取消"
+        @click="$router.push('/quxiao')"
+      />
     </van-grid>
     <!-- 宫格 end -->
     <!-- bar_tool  -->
@@ -58,7 +74,7 @@
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
-    <van-row  style="border-bottom:15px solid #eee">
+    <van-row style="border-bottom:15px solid #eee">
       <van-col span="1"></van-col>
       <van-col span="21" @click="$router.push('/anquan')">账户安全</van-col>
       <van-col span="2">
@@ -74,14 +90,14 @@
     </van-row>
     <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21"  @click="$router.push('/lianxi')">联系我们</van-col>
+      <van-col span="21" @click="$router.push('/lianxi')">联系我们</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
-     <van-row class="bar-tool">
+    <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21"  @click="$router.push('/help')">帮助中心</van-col>
+      <van-col span="21" @click="$router.push('/help')">帮助中心</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
@@ -95,48 +111,48 @@
 export default {
   data() {
     return {
-      img:require("../assets/img/user.png"),
-      name:'注册/登录'
-    }
+      img: require("../assets/img/user.png"),
+      name: "注册/登录"
+    };
   },
   methods: {
     login() {
-      this.$router.push("/login")
+      this.$router.push("/login");
     },
-    go(){
-      this.$router.push("/youhui")
+    go() {
+      this.$router.push("/youhui");
     },
-    goCity(){
-      this.$router.push("/city")
+    goCity() {
+      this.$router.push("/city");
+    },
 
-    },
-    
-    goFilght(){
-      this.$router.push("/filght")
-
+    goFilght() {
+      this.$router.push("/filght");
     }
   },
-  created(){
-    if(!localStorage.login){
-        this.$router.push("/login")
-    }else{
-      this.$axios.get("getdata",{
-        params:{
-          token:localStorage.login
-        }
-      }).then((req)=>{
-        console.log(req.data.result);
-        this.img = req.data.result.img
-        this.name = req.data.result.name
-      })
+  created() {
+    if (!localStorage.login) {
+      // this.$router.push("/login");
+    } else {
+      this.$axios
+        .get("getdata", {
+          params: {
+            token: localStorage.login
+          }
+        })
+        .then(req => {
+          console.log(req.data.result);
+          this.img = req.data.result.img;
+          this.name = req.data.result.name;
+        });
     }
   }
 };
 </script>
 
 <style lang="less" scoped>
-.bor-bar{
-  border-bottom:15px solid #eee;
+.bor-bar {
+  border-bottom: 15px solid #eee;
   color: #666;
 }
 .header {

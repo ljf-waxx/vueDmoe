@@ -1,21 +1,20 @@
 <template>
   <div class="pad-bot">
-    
-    <div v-if="display">
+    <div v-if="!ispush1">
       <van-nav-bar title="我的购物袋" heighe:2.5rem />
       <div class="br-bor"></div>
-      <div
-        class="warm-prompt ng-binding"
-        ng-bind-html="ctrl.data.reminder[0]"
-      >温馨提示 :三亚机场出发，至少于起飞前6小时完成购买；海口美兰、琼海博鳌机场、火车站出发，至少离岛前一天内完成购买，如有疑问，请致电400-699-6956。</div>
+      <div class="warm-prompt ng-binding" ng-bind-html="ctrl.data.reminder[0]">
+        温馨提示
+        :三亚机场出发，至少于起飞前6小时完成购买；海口美兰、琼海博鳌机场、火车站出发，至少离岛前一天内完成购买，如有疑问，请致电400-699-6956。
+      </div>
       <div class="box-bottom">
         <div class="tip">您的购物袋内还没有任何商品 ……</div>
         <span class="btn" @click="go">去逛逛</span>
       </div>
     </div>
 
-    <div v-if="!display">
-      <van-nav-bar title="购物车" left-text="返回" left-arrow @click-left="go1" />
+    <div v-if="ispush1">
+      <van-nav-bar title="购物车" left-text="返回" left-arrow @click-left="go" />
 
       <!-- <van-card
         v-for="(value,i) in ispushList"
@@ -25,60 +24,54 @@
         :desc="listData[value].tip"
         title="商品名称"
         :thumb="listData[value].path"
-      /> -->
+      />-->
 
+      <!-- {{listAllData[$route.query.index].bannerList[$route.query.list]}} -->
 
+      <div v-for="(value, i) in ispushList" :key="i">
+        <!-- {{value}}{{ispushList1[i]}} -->
+        <van-card
+          :num="listAllData[value].bannerList[ispushList1[i]].num"
+          :price="listAllData[value].bannerList[ispushList1[i]].price"
+          :desc="listAllData[value].bannerList[ispushList1[i]].tip"
+          title="商品名称"
+          :thumb="listAllData[value].bannerList[ispushList1[i]].path"
+        >
+          <div slot="footer">
+            <van-button size="mini" @click="add1(value,ispushList1[i])">+</van-button>
+            {{ listAllData[value].bannerList[ispushList1[i]].num }}
+            <van-button size="mini" @click="jian(value,ispushList1[i])">-</van-button>
 
-<div  v-for="(value,i) in ispushList"
-        :key="i">
-  <van-card
- 
-        :num="listData[value].num"
-        :price="listData[value].price"
-        :desc="listData[value].tip"
-        title="商品名称"
-        :thumb="listData[value].path"
->
-  
-
-
-  <div slot="footer">
-    <van-button size="mini" @click="add1(value)">
-      +
-    </van-button>
-    {{listData[value].num}}
-    <van-button size="mini" @click="jian(value)">
-     -
-    </van-button>
-
-    <div style="margin-top:1rem;">
-      <van-button round type="danger" size="mini" @click="redel(i,value)">删除</van-button>
-    </div>
-  </div>
-</van-card>
-
-</div>
-
-      <van-submit-bar :price="price1" button-text="提交订单" @submit="onSubmit">
-        <!-- <van-checkbox v-model="checked">全选</van-checkbox> -->
+            <div style="margin-top:1rem;">
+              <van-button round type="danger" size="mini" @click="redel(i,value,ispushList1[i])">删除</van-button>
+            </div>
+          </div>
+        </van-card>
+      </div>
+      <van-submit-bar :price="price1" button-text="提交订单" @submit="onSubmit(ispushList)">
         <span slot="tip">
           请确认收货人,
           <span style="color:#00b5ffcf;" @click="goCity">修改地址</span>
         </span>
       </van-submit-bar>
     </div>
+    <!-- 55555{{listAllData}} -->
+    <!-- {{ispushList}}
+    {{ispushList1}}
+    {{listAllData[$route.query.index].bannerList[$route.query.list]}} -->
   </div>
 </template>
 
 <script>
 import { mapState } from "vuex";
-import { Notify } from 'vant';
+import { Notify } from "vant";
+// import func from '../../vue-temp/vue-editor-bridge';
 export default {
   data() {
     return {
       checked: 1,
       price: 1,
-      display: true,
+      display: this.ispush,
       dataList: []
     };
   },
@@ -89,57 +82,72 @@ export default {
     go1() {
       this.$router.go(-1);
     },
-    goCity(){
+    goCity() {
       this.$router.push("/city");
-
     },
-    onSubmit() {
-      console.log("aaa")
-      this.$store.commit("guiling",this.ispushList)
-      this.$store.commit("isdisp")
-      Notify({ type: 'success', message: '提交成功',duration:2000 });
-      this.display =  this.ispush;
+    onSubmit(arr) {
+      this.$store.commit("tijiao");
+      this.$store.commit("quanling",arr);
+      // this.$store.commit("isdisp");
+      Notify({ type: "success", message: "提交成功", duration: 2000 });
+      this.display = this.ispush;
     },
-    add1(i){
-        this.$store.commit("add1",i)
+    add1(index1, index2) {
+      let arr = [index1, index2];
+      this.$store.commit("add1", arr);
     },
-    jian(i){
-       this.$store.commit('jian',i)
+    jian(index1, index2) {
+      let arr = [index1, index2];
+      this.$store.commit("jian", arr);
     },
-    redel(i,value){
-      this.$store.commit("redel",i)
-      this.$store.commit("redel1",value)
+    redel(i, value, id) {
+      this.$store.commit("redel", i);
+      let arr = [value, id];
+      this.$store.commit("guiling", arr);
     }
   },
   created() {
-    if (this.$route.query.index) {
-      this.$store.commit("pushIndex", this.$route.query.index);
-    }
-    if (!this.ispush) {
-      this.display = false;
-    }
+    console.log(this.ispush);
+    // console.log(this.ispush)
   },
   computed: {
     ...mapState({
       listData: state => state.bannerLiner.list,
       ispush: state => state.shoppingCar.ispush,
-      ispushList: state => state.shoppingCar.ispushList
+      ispushList: state => state.shoppingCar.ispushList,
+      ispushList1: state => state.shoppingCar.ispushList2,
+      listAllData: state => state.bannerLiner.dataList
     }),
     price1: function() {
       var num = 0;
-
-      this.ispushList.forEach(value => {
-        console.log(this.listData[value].price*this.listData[value].num)
-        num += this.listData[value].price*this.listData[value].num*100
+      // this.ispushList.forEach(value => {
+      //    num += this.listAllData[value].bannerList[2].price * this.listAllData[value].bannerList[2].num * 100
+      // });
+      var _this = this
+      this.ispushList.forEach(function(value, i) {
+        let index = _this.ispushList1[i]
+        num +=
+          _this.listAllData[value].bannerList[index].price *
+          _this.listAllData[value].bannerList[index].num *
+          100;
       });
       return num;
+    },
+    ispush1 : function(){
+        
+          if(this.ispushList.length !== 0 ){
+            return true
+          }else{
+            return false
+          }
+         
     }
-  }
+  },
 };
 </script>
 
 <style lang="less" scoped>
-.pad-bot{
+.pad-bot {
   padding-bottom: 5rem;
 }
 .van-nav-bar {
@@ -150,7 +158,7 @@ export default {
   height: 1rem;
   background-color: #f7f7f7;
 }
-.van-card{
+.van-card {
   margin-top: 1rem;
 }
 .warm-prompt {
@@ -184,7 +192,7 @@ export default {
   margin-top: 10px;
   border-radius: 0.375rem;
 }
-.van-submit-bar{
+.van-submit-bar {
   bottom: 50px;
 }
 </style>
