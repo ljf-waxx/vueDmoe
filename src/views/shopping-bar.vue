@@ -62,8 +62,8 @@
       <van-submit-bar :price="price1" button-text="提交订单" @submit="onSubmit">
         <!-- <van-checkbox v-model="checked">全选</van-checkbox> -->
         <span slot="tip">
-          你的收货地址不支持同城送,
-          <span style="color:#00b5ffcf;">修改地址</span>
+          请确认收货人,
+          <span style="color:#00b5ffcf;" @click="goCity">修改地址</span>
         </span>
       </van-submit-bar>
     </div>
@@ -89,12 +89,16 @@ export default {
     go1() {
       this.$router.go(-1);
     },
+    goCity(){
+      this.$router.push("/city");
+
+    },
     onSubmit() {
-      Notify({ type: 'success', message: '提交成功',duration:2000 });
+      console.log("aaa")
+      this.$store.commit("guiling",this.ispushList)
       this.$store.commit("isdisp")
-      this.display = true
-
-
+      Notify({ type: 'success', message: '提交成功',duration:2000 });
+      this.display =  this.ispush;
     },
     add1(i){
         this.$store.commit("add1",i)
@@ -123,10 +127,6 @@ export default {
     }),
     price1: function() {
       var num = 0;
-      // for (var i = 0; i < this.ispushList.length; i++) {
-      //   console.log(this.listData[1].price, this.listData[1].num);
-      //   num += this.listData[i].price * this.listData[i].num * 100;
-      // }
 
       this.ispushList.forEach(value => {
         console.log(this.listData[value].price*this.listData[value].num)
@@ -183,5 +183,8 @@ export default {
   width: 80%;
   margin-top: 10px;
   border-radius: 0.375rem;
+}
+.van-submit-bar{
+  bottom: 50px;
 }
 </style>

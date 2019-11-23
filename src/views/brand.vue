@@ -1,6 +1,6 @@
 <template>
   <div>
-    <van-nav-bar title="全部品牌" height="40px" @click-right="goSearch"	>
+    <van-nav-bar title="全部品牌" height="40px" @click-right="goSearch">
       <van-icon name="search" slot="right" @click="goSearch" />
     </van-nav-bar>
     <!-- <van-row>
@@ -61,65 +61,50 @@
     </van-index-bar>-->
 
     <!-- select tool end-->
-    <div>
-      <van-index-bar :index-list="indexList" :sticky="sticky1">
-        <van-index-anchor index="a">标题1</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
+    <van-index-bar>
+      <van-index-anchor index="A" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
 
-        <van-index-anchor index="b">标题2</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
+      <van-index-anchor index="B" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
 
-        <van-index-anchor index="c">标题3</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-
-        <van-index-anchor index="d">标题4</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-
-        <van-index-anchor index="e">标题5</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-
-        <van-index-anchor index="f">标题6</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-index-anchor index="g">标题6</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-index-anchor index="h">标题6</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-index-anchor index="i">标题6</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-index-anchor index="j">标题6</van-index-anchor>
-        <van-cell title="文本" />
-        <van-cell title="文本" />
-        <van-cell title="文本" />...
-      </van-index-bar>
-    </div>
+      <van-index-anchor index="c" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-index-anchor index="d" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-index-anchor index="e" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-index-anchor index="f" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-index-anchor index="g" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />
+      <van-cell title="文本" />...
+    </van-index-bar>
   </div>
 </template>
 
 <script>
-
+import { IndexBar, IndexAnchor } from "vant";
 export default {
   data() {
     return {
       name: "cityList",
-      sticky1: true,
+      sticky: true,
+      highlightColor:'red',	
+      index:1,
       picList: [
         require("../assets/img/brand1.jpg"),
         require("../assets/img/brand2.jpg"),
@@ -132,32 +117,18 @@ export default {
         require("../assets/img/brand9.jpg"),
         require("../assets/img/brand10.jpg")
       ],
-      indexList: [
-        "a",
-        "b",
-        "c",
-        "d",
-        "e",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k",
-        "f",
-        "g",
-        "h",
-        "i",
-        "j",
-        "k"
-      ]
+      indexList: []
     };
   },
   methods: {
-     goSearch(){
-      this.$router.push("/search")
+    goSearch() {
+      this.$router.push("/search");
     }
   },
+  components: {
+    [IndexBar.name]: IndexBar,
+    [IndexAnchor.name]: IndexAnchor
+  }
 };
 </script>
 

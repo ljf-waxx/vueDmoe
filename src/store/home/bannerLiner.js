@@ -356,6 +356,20 @@ export default {
     },
     redel1(state,i){
       state.list[i].num = 0;
+    },
+    
+    guiling(state,arr){
+        window.console.log(state,arr);
+        // state.list
+        window.console.log(arr)
+        arr.forEach(item => {
+          state.list[item].num = 0
+        });
+    },
+    jiayi(state,index){
+      if(state.list[index].num == 0){
+        state.list[index].num +=1
+      }
     }
    
   },

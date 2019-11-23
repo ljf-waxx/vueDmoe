@@ -103,7 +103,9 @@ export default {
     gobuy(index) {
       if (this.ispushList.length >= 0) {
         this.$store.state.shoppingCar.lists.push(this.list[index]);
+        this.$store.commit("jiayi",this.key)
         this.$store.commit("isfals");
+
       }
       // console.log(this.ispush)
       this.$router.push({

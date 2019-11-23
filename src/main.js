@@ -13,7 +13,11 @@ import "vant/lib/index.css";
 Vue.use(Vant);
 
 import axios from "axios"
+axios.defaults.baseURL = 'http://192.168.54.65:3000'
 Vue.prototype.$axios = axios;
+
+import vueJsonp from "vue-jsonp"
+Vue.use(vueJsonp)
 
 Vue.config.productionTip = false;
 

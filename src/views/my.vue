@@ -10,9 +10,9 @@
     </div>
     <!-- 订单 -->
     <div class="order">
-      <div class="order-bar">
+      <div class="order-bar"  @click="$router.push('/dingdan')">
         <div class="order-list-left">
-          <span class="iconfont icon-single"></span> 全部订单
+          <span class="iconfont icon-single" ></span> 全部订单
         </div>
         <div class="order-list-right">
           查看全部订单
@@ -23,65 +23,65 @@
     <!-- 订单 end-->
     <!-- 宫格 -->
     <van-grid  icon-size="20px" style="border-bottom:15px solid #eee">
-      <van-grid-item icon="balance-pay" text="待支付" />
-      <van-grid-item icon="logistics" text="代提货" />
-      <van-grid-item icon="gift-o" text="待完成" />
-      <van-grid-item icon="clock-o" text="已取消" />
+      <van-grid-item icon="balance-pay" text="待支付" @click="$router.push('/zhifu')" />
+      <van-grid-item icon="logistics" text="代提货" @click="$router.push('/tihuo')" />
+      <van-grid-item icon="gift-o" text="待完成" @click="$router.push('/wancehng')" />
+      <van-grid-item icon="clock-o" text="已取消" @click="$router.push('/quxiao')" />
     </van-grid>
     <!-- 宫格 end -->
     <!-- bar_tool  -->
     <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21">我的优惠劵</van-col>
+      <van-col span="21" @click="go">我的优惠劵</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
     <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21">我的收藏</van-col>
+      <van-col span="21" @click="$router.push('/collect')">我的收藏</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
     <van-row class="bar-tool" style="border-bottom:15px solid #eee">
       <van-col span="1"></van-col>
-      <van-col span="21">浏览记录</van-col>
+      <van-col span="21" @click="$router.push('/record')">浏览记录</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
     <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21">我的提货人</van-col>
+      <van-col span="21" @click="goCity">我的提货人</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
     <van-row  style="border-bottom:15px solid #eee">
       <van-col span="1"></van-col>
-      <van-col span="21">账户安全</van-col>
+      <van-col span="21" @click="$router.push('/anquan')">账户安全</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
     <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21">航班/火车票信息更变</van-col>
+      <van-col span="21" @click="goFilght">航班/火车票信息更变</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
     <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21">联系我们</van-col>
+      <van-col span="21"  @click="$router.push('/lianxi')">联系我们</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
     </van-row>
      <van-row class="bar-tool">
       <van-col span="1"></van-col>
-      <van-col span="21">帮助中心</van-col>
+      <van-col span="21"  @click="$router.push('/help')">帮助中心</van-col>
       <van-col span="2">
         <van-icon name="arrow" color="#ccc" />
       </van-col>
@@ -91,6 +91,7 @@
 </template>
 
 <script>
+// import youhui from '../views/youhui'
 export default {
   data() {
     return {
@@ -101,13 +102,25 @@ export default {
   methods: {
     login() {
       this.$router.push("/login")
+    },
+    go(){
+      this.$router.push("/youhui")
+    },
+    goCity(){
+      this.$router.push("/city")
+
+    },
+    
+    goFilght(){
+      this.$router.push("/filght")
+
     }
   },
   created(){
     if(!localStorage.login){
         this.$router.push("/login")
     }else{
-      this.$axios.get("http://192.168.54.65:3000/getdata",{
+      this.$axios.get("getdata",{
         params:{
           token:localStorage.login
         }

@@ -57,33 +57,33 @@
     <!-- pic -->
     <van-row>
       <van-col span="12" style="padding-right:4px">
-        <img src="../assets/img/pic1.jpg" alt />
+        <img src="../assets/img/pic1.jpg" alt  @click="go(1)" />
       </van-col>
       <van-col span="12" style="padding-left:4px">
-        <img src="../assets/img/pic3.jpg" alt />
+        <img src="../assets/img/pic3.jpg" alt  @click="go(2)" />
       </van-col>
       <van-col span="24" class="pic-bot">
-        <img src="../assets/img/pic2.jpg" alt />
+        <img src="../assets/img/pic2.jpg" alt @click="go(3)"  />
       </van-col>
     </van-row>
     <!-- pic  end-->
     <!-- 特卖 -->
-    <plateNav :plateDatas="plateData"></plateNav>
+    <plateNav :plateDatas="plateData"  :index="1"></plateNav>
     <bannerLiner :lists="list"></bannerLiner>
 
-    <plateNav :plateDatas="plateData1"></plateNav>
+    <plateNav :plateDatas="plateData1" :index="2"></plateNav>
     <bannerLiner :lists="list1"></bannerLiner>
 
-    <plateNav :plateDatas="plateData2"></plateNav>
+    <plateNav :plateDatas="plateData2" :index="3"></plateNav>
     <bannerLiner :lists="list2"></bannerLiner>
 
     <plateNav :plateDatas="plateData3"></plateNav>
     <bannerLiner :lists="list3"></bannerLiner>
-    <plateNav :plateDatas="plateData4"></plateNav>
-    <plateNav :plateDatas="plateData5"></plateNav>
-    <plateNav :plateDatas="plateData6"></plateNav>
-    <plateNav :plateDatas="plateData7"></plateNav>
-    <plateNav :plateDatas="plateData8"></plateNav>
+    <plateNav :plateDatas="plateData4" :index="4"></plateNav>
+    <plateNav :plateDatas="plateData5" :index="5"></plateNav>
+    <plateNav :plateDatas="plateData6" :index="6"></plateNav>
+    <plateNav :plateDatas="plateData7" :index="7"></plateNav>
+    <plateNav :plateDatas="plateData8" :index="8"></plateNav>
 
     <router-view></router-view>
   </div>

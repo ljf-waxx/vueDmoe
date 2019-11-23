@@ -7,7 +7,7 @@
         }}</van-divider>
       </div>
       <div class="pic-box">
-        <img :src="value.path" alt />
+        <img :src="value.path" alt @click="go(index)" />
       </div>
       <!-- {{plateDatas}} -->
     </div>
@@ -19,7 +19,14 @@ export default {
   data() {
     return {};
   },
-  props: ["plateDatas"]
+  methods:{
+     go(index) {
+      this.$router.push(
+       {path:`/buying?index=${index}`}
+      )
+    }
+  },
+  props: ["plateDatas",'index']
 };
 </script>
 

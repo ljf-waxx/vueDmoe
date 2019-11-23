@@ -6,9 +6,7 @@
       <van-tabbar-item icon="wap-home" to="/home">首页</van-tabbar-item>
       <van-tabbar-item icon="label" to="/brand">品牌</van-tabbar-item>
       <van-tabbar-item icon="bars" to="select">分类</van-tabbar-item>
-      <van-tabbar-item icon="shopping-cart" to="shopping"
-        >购物袋</van-tabbar-item
-      >
+      <van-tabbar-item icon="shopping-cart" to="shopping">购物袋</van-tabbar-item>
       <van-tabbar-item icon="manager" to="my">我的</van-tabbar-item>
     </van-tabbar>
   </div>
@@ -32,8 +30,35 @@ export default {
   },
   watch: {
     "$route.path": function(newvalule) {
+      switch (newvalule) {
+        case "/home":
+          this.active = 0;
+          // console.log("0")
+          break;
+        case "/brand":
+          this.active = 1;
+          break;
+        case "/select":
+          this.active = 2;
+          break;
+        case "/shopping":
+          this.active = 3;
+          break;
+        case "/my":
+          this.active = 4;
+          break;
+      }
+
       // console.log(newvalule)
-      if (newvalule == "/" || newvalule == "/gg" || newvalule == "/buying") {
+      if (
+        newvalule == "/" ||
+        newvalule == "/gg" ||
+        newvalule == "/buying" ||
+        newvalule == "/filght" ||
+        newvalule == "/record" ||
+        newvalule == "/lianxi" ||
+        newvalule == "/collect"
+      ) {
         this.display = false;
       } else {
         this.display = true;
@@ -47,7 +72,7 @@ export default {
 html,
 body {
   padding: 0;
-   min-width: 320px;
+  min-width: 320px;
   max-width: 640px;
   margin: 0;
 }
@@ -58,6 +83,5 @@ body {
   min-width: 320px;
   max-width: 640px;
   padding-bottom: 3.125rem;
-  
 }
 </style>
