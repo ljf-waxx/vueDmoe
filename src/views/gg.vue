@@ -1,6 +1,7 @@
 <template>
   <div class="banner">
     <h3>广告时间:{{ num }}</h3>
+    <img src="../assets/img/gao.jpg" alt="">
   </div>
 </template>
 
@@ -8,7 +9,7 @@
 export default {
   data() {
     return {
-      num: 0,
+      num: 3,
       timer: null
     };
   },
@@ -32,13 +33,20 @@ export default {
 .banner {
   width: 100%;
   height: 100%;
+  min-width: 320px;
+  max-width: 640px;
   position: fixed;
   top: 0;
   bottom: 0;
-  background: url(../assets/img/gao.jpg) no-repeat center center;
-  background-size: 100%;
+  // background: url(../assets/img/gao.jpg) no-repeat center center;
+  // background-size: 100%;
+  img{
+    width: 100%;
+  }
 }
 h3 {
+  position: absolute;
+  top: 0;
   margin: 15px;
   color: #fff;
   font-weight: 500;

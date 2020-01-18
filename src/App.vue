@@ -51,7 +51,7 @@ export default {
           break;
       }
 
-      // console.log(newvalule)
+      // console.log(rankingLIst)
       if (
         newvalule == "/" ||
         newvalule == "/gg" ||
@@ -59,6 +59,11 @@ export default {
         newvalule == "/filght" ||
         newvalule == "/record" ||
         newvalule == "/lianxi" ||
+        newvalule == "/helpContent" ||
+        newvalule == "/wenti" ||
+        newvalule == "/dingdan" ||
+        newvalule == "/youhui" ||
+        newvalule == "/rankingLIst" ||
         newvalule == "/collect"
       ) {
         this.display = false;
@@ -74,9 +79,10 @@ export default {
 html,
 body {
   padding: 0;
-  min-width: 320px;
-  max-width: 640px;
+  // min-width: 320px;
+  // max-width: 640px;
   margin: 0;
+  // overflow: hidden;
 }
 #app {
   width: 100%;
